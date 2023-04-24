@@ -1,17 +1,10 @@
 import time
-import re
 from selenium import webdriver
 from pages.LoginPage import LoginPage
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
 from helper.Crawler import Crawler
 from selenium.webdriver.chrome.options import Options
-
-#google auth
-gauth = GoogleAuth()        
-drive = GoogleDrive(gauth)
 
 #driver
 options = Options()  # Initialize an instance of the Options class
@@ -34,7 +27,7 @@ driver.get('https://www.upwork.com/nx/jobs/search/?q=automation%20selenium&sort=
 # driver.maximize_window()
 btnPagination = "//button[contains(@class,'up-pagination-item up-btn' )]//span[contains(text(),'Next')]"
 #crawling
-totalPage = 3
+totalPage = 5
 for i in range(totalPage):
     page_source = driver.page_source
     crawler.runCrawler(page_source)
@@ -44,10 +37,4 @@ for i in range(totalPage):
 crawler.storeToMonggoDb()
 
 driver.quit()
-
-# store to drive
-# nameFile = 'jobupwork.csv'
-# gfile = drive.CreateFile({'parents':[{'id':'1NkQtTI2vxdmVII7DQgoq9YwAfc4ZZXPU'}]})
-# gfile.SetContentFile(nameFile)
-# gfile.Upload()
 
