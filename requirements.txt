@@ -2,3 +2,4 @@ pandas==1.4.0
 pymongo==4.3.3
 selenium==4.8.2
 apscheduler==3.6.3
+webdriver-manager==3.8.5
