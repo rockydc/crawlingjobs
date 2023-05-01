@@ -3,3 +3,5 @@ pymongo==4.3.3
 selenium==4.8.2
 apscheduler==3.6.3
 webdriver-manager==3.8.5
+Flask==2.2.4
+Flask-Cors==3.0.10
